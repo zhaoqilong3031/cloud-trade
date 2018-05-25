@@ -1,0 +1,17 @@
+[
+  {
+    "path": "splash_screen",
+    "config": {
+      "navigationBarTitleText": "首屏"
+    }
+  },
+  {
+    "path": "index"
+  },
+  {
+    "path": "logs",
+    "config": {
+      "navigationBarTitleText": "日志"
+    }
+  }
+]

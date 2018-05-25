@@ -1,0 +1,19 @@
+@import './var.sass'
+
+@mixin full
+  width: $windowWidth
+  height: $windowHeight
+
+@mixin border($dir: bottom, $color: $N4, $width: $slimLine, $style: solid)
+  @if $dir == 'all'
+    border: $width $style $color
+  @else
+    border-#{$dir}: $width $style $color
+
+@mixin flex($dir: row, $jc: center, $ai: center)
+  display: flex
+  flex-direction: $dir
+  justify-content: $jc
+  align-items: $ai
+
+  
