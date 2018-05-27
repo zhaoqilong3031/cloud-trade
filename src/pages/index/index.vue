@@ -1,23 +1,21 @@
-<template lang='pug'>
-  .container(@click='clickHandle("test click", $event)')
-    .userinfo(@click='bindViewTap')
-      img.userinfo-avatar(v-if='userInfo.avatarUrl' :src='userInfo.avatarUrl' background-size='cover')
-      .userinfo-nickname
-        card(:text='userInfo.nickName')
+<template>
+  <view class="container">
+    <view class="banner">
+        <div>banner</div>
+    </view>
 
-    .usermotto
-      .user-motto
-        card(:text='motto')
+    <index-card></index-card>
+    <content-v></content-v>
 
-    form.form-container
-      input.form-control(type='text' v-model='motto' placeholder='v-model')
-      input.form-control(type='text' v-model.lazy='motto' placeholder='v-model.lazy')
+
+  </view>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import card from '@/components/card'
-
+import indexCard from '@/components/index-card'
+import contentV from '@/components/index-content'
 export default {
   data () {
     return {
@@ -26,7 +24,9 @@ export default {
   },
 
   components: {
-    card
+    card,
+    indexCard,
+    contentV
   },
 
   computed: {
@@ -46,31 +46,28 @@ export default {
 }
 </script>
 
-<style scoped lang='sass'>
-@import '../../styles/mixin'
+<style lang="scss" scoped>
+.container {
+    height: 100%;
+    background: #f3f3f3;
+    .swiper-box {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        .swiper-item {
+            height: 100%;
+            text-align: center;
+        }
+    }
+    .banner {
+      height: 100px;
+      background:#61C3B4;
+      width: 100%;
+      margin-top: 2px;
+       -moz-box-shadow:1px 1px 3px #ffffff;
+     -webkit-box-shadow:1px 1px 3px #ffffff;
+      box-shadow:1px 1px 3px #ffffff;
 
-.userinfo
-  display: flex
-  flex-direction: column
-  align-items: center
-
-.userinfo-avatar
-  width: 128rpx
-  height: 128rpx
-  margin: 20rpx
-  border-radius: 50%
-
-.userinfo-nickname
-  color: #aaa
-
-.usermotto
-  +border
-  background-color: $B2
-  margin-top: 150px
-
-.form-control
-  display: block
-  padding: 0 12px
-  margin-bottom: 5px
-  border: 1px solid #ccc
+    }
+}
 </style>
