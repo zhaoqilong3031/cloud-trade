@@ -18,12 +18,12 @@ const app = new Vue({
 app.$mount()
 
 export default {
-  // 这个字段走 app.json
+  // 这个字段走 app.json //#3CC4C4 444c5f 6BAFFA 61C3B4
   config: {
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#00BF00',
-      navigationBarTitleText: '行情宝',
+      navigationBarBackgroundColor: '#61C3B4',
+      navigationBarTitleText: '云工厂',
       navigationBarTextStyle: '#fff'
     }
   }
