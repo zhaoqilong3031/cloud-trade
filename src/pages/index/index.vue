@@ -1,14 +1,20 @@
 <template>
-  <view class="container">
-    <view class="banner">
-        <div>banner</div>
-    </view>
+  <view class="container" scroll-y>
 
-    <index-card></index-card>
-    <content-v></content-v>
+ <scroll-view scroll-y @scrolltolower="toLow"  class="content">
 
+    <!-- <view class="content" > -->
+      <view class="banner">
+          <div>banner</div>
+      </view>
 
+      <index-card></index-card>
+      <content-v :next="next"></content-v>
+    <!-- </view> -->
+    </scroll-view>
+    <v-footer />
   </view>
+
 </template>
 
 <script>
@@ -16,17 +22,20 @@ import { mapState } from 'vuex'
 import card from '@/components/card'
 import indexCard from '@/components/index-card'
 import contentV from '@/components/index-content'
+import VFooter from '@/components/footer'
 export default {
   data () {
     return {
-      motto: 'Hello World'
+      motto: 'Hello World',
+      next: false
     }
   },
 
   components: {
     card,
     indexCard,
-    contentV
+    contentV,
+    VFooter
   },
 
   computed: {
@@ -41,6 +50,10 @@ export default {
     },
     clickHandle (msg, ev) {
       console.log('clickHandle:', msg, ev)
+    },
+    toLow (e) {
+      console.log('1222222222222')
+      this.next = true
     }
   }
 }
@@ -48,8 +61,28 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: #f3f3f3;
+    position: relative;
+    .content {
+      width: 100%;
+      height: calc(100% - 50px);
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+
+.content-tab{
+    width:100%; 
+    height: calc(100% - 580rpx);
+    justify-content: center;
+    align-items: center;
+}
+
     .swiper-box {
         display: block;
         width: 100%;

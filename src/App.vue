@@ -19,6 +19,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  font-size: 14px;
 }
 /* this rule will be remove */
 * {
