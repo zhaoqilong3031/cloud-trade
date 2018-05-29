@@ -2,7 +2,7 @@
     <view class="content-tab"  scroll-x style="width: 100%">
         <div class="content_title" >
           <img src="../../static/title.jpg" style="height:30px;width:30px"/>
-          <span>完成拼单</span>
+          <span>正在拼团</span>
         </div>
         <div class="block"></div> 
           <v-content :queryParam="queryParam" :next={next} />

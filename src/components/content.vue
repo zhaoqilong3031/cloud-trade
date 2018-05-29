@@ -1,10 +1,33 @@
 <template>
    <!-- <scroll-view scroll-y style="height:100%;"  @scrolltolower="toLow" class="content_card"> -->
      <view class="content_card">
+ 
+        <a :href="'/pages/article/main?id='+item.id" class="content" v-for="(item,index) in list" :key="index">
+       
+              <div class="item-img">
+                <img :src="item.img" alt="图片">
+              </div>
+              <div class="item">
+                 <div class="feed-title">
+                    <p>{{item.title}}</p>
+                </div>
+                <div class="feed-title">
+                    <p>报团数：</p><p>{{item.joinNum}}</p>
+                </div>
+                <div class="feed-title">
+                    <p>目标数：</p><p>{{item.joinNum}}</p>
+                </div>
+                <div class="feed-title">
+                    <p>截止时间：</p><p>{{item.endTm}}</p>
+                </div>
+              </div>
+        </a>
+ 
         <div :v-model="content" class="content">
-           {{articleList.reply_count}}
-        </div>
+            {{orderList.reply_count}}
+         </div>
 
+        
         <dev v-model="content" class="content">
               我是内容2
         </dev>
@@ -19,7 +42,7 @@ export default {
   props: ['queryParam', 'next'],
   data () {
     return {
-      articleList: [],
+      orderList: [],
       page: 1
     }
   },
@@ -36,13 +59,13 @@ export default {
         title: '加载中'
       })
       console.log(this.queryParam)
-      this.articleList = [{title: '123', reply_count: 1 + this.page, createTime: 12, lastReplyTime: 12, author: {loginname: '12'}}]
+      this.orderList = [{title: '女装时装', joinNum: 12, endTm: '06/30', img: 'https://ss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3445296831,311703592&fm=202&src=781&mola=new&crop=v1'}]
       wx.hideLoading()
     }
   },
   computed: {
     list () {
-      return this.articleList.map(item => {
+      return this.orderList.map(item => {
         delete item.content
         return item
       })
@@ -75,9 +98,22 @@ export default {
     background: #ffffff;
     margin-top: 10px;
     height: 260rpx;
-     -moz-box-shadow:1px 1px 3px #333333;
-     -webkit-box-shadow:1px 1px 3px #333333;
-      box-shadow:1px 1px 3px #585757;
-      border-radius:9px;
+    -moz-box-shadow:1px 1px 3px #333333;
+    -webkit-box-shadow:1px 1px 3px #333333;
+    box-shadow:1px 1px 3px #585757;
+    border-radius:9px;
+    .item-img {
+      width: 50%;
+      height: 100%;
+
+      img{
+         width: 100%;
+      height: 100%;
+      }
+    }
+    .item{
+      width: 49%;
+      height: 100%;
+    }
   }
 </style>
